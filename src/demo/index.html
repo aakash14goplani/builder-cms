@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Svelte Components & Elements Demo</title>
+    <style>
+      body {
+        font-family:
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          Roboto,
+          Oxygen,
+          Ubuntu,
+          Cantarell,
+          "Open Sans",
+          "Helvetica Neue",
+          sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-color: #f9fafb;
+        color: #1f2937;
+      }
+
+      section {
+        margin-bottom: 40px;
+      }
+
+      h1,
+      h2 {
+        margin-top: 0;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .demo-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 20px;
+        margin-top: 20px;
+      }
+
+      code {
+        font-family: monospace;
+        background-color: #e5e7eb;
+        padding: 2px 4px;
+        border-radius: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Svelte Components & Custom Elements Demo</h1>
+      <p>
+        This page demonstrates both Svelte components (when used in a Svelte
+        app) and Custom Elements (which work in any HTML page).
+      </p>
+
+      <section>
+        <h2>Custom Elements</h2>
+        <p>
+          These Web Components can be used in any HTML page with the script
+          included:
+        </p>
+
+        <div class="demo-grid">
+          <svelte-card
+            title="Card Element"
+            subtitle="A simple card component"
+            elevation="2"
+          >
+            <p>
+              This is a custom element card. You can use it in any HTML page.
+            </p>
+
+            <div slot="footer">
+              <svelte-button
+                text="Learn More"
+                variant="secondary"
+              ></svelte-button>
+              <svelte-button text="Submit"></svelte-button>
+            </div>
+          </svelte-card>
+
+          <div>
+            <svelte-input
+              label="Username"
+              placeholder="Enter your username"
+              required="true"
+              helper-text="Your unique username for the site"
+            ></svelte-input>
+
+            <svelte-input
+              type="password"
+              label="Password"
+              placeholder="Enter your password"
+              required="true"
+              error="Password must be at least 8 characters"
+            ></svelte-input>
+
+            <svelte-button
+              text="Sign In"
+              full-width="true"
+              size="large"
+            ></svelte-button>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <script type="module">
+      // In a real app, you would import from your CDN or built files
+      import "../elements/index.ts";
+
+      // Add event listeners to custom elements
+      document
+        .querySelector("svelte-button")
+        .addEventListener("button-click", (e) => {
+          console.log("Button clicked!", e.detail);
+        });
+
+      document
+        .querySelector("svelte-input")
+        .addEventListener("input-change", (e) => {
+          console.log("Input changed:", e.detail.value);
+        });
+    </script>
+  </body>
+</html>

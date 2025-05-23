@@ -1,0 +1,48 @@
+{
+  "name": "svelte-components",
+  "version": "1.0.0",
+  "description": "Svelte starter project for custom components and custom elements",
+  "type": "module",
+  "svelte": "./dist/index.js",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "svelte": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./elements": "./dist/elements/index.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && npm run package",
+    "preview": "vite preview",
+    "package": "svelte-package",
+    "check": "svelte-check --tsconfig ./tsconfig.json",
+    "build:elements": "vite build --config vite.config.elements.js"
+  },
+  "keywords": [
+    "svelte",
+    "custom elements",
+    "web components",
+    "ui components"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "svelte": "^4.2.8",
+    "@sveltejs/package": "^2.2.3",
+    "vite": "^4.5.1",
+    "typescript": "^5.2.2",
+    "svelte-check": "^3.6.2",
+    "svelte-preprocess": "^5.1.1"
+  },
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "^2.4.6"
+  }
+}
